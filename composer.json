@@ -1,0 +1,20 @@
+{
+    "name": "nymul/wp_rest_plugin",
+    "description": "A plugin for all the plugin information with rest api and oop",
+    "type": "wordpress-plugin",
+    "license": "GPLv2",
+    "autoload": {
+        "psr-4": {
+            "Nymul\\WpRestPlugin\\": "includes/"
+        },
+        "files": []
+    },
+    "authors": [
+        {
+            "name": "Nymul Islam Moon",
+            "email": "towkir1997islam@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

@@ -53,17 +53,29 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+require_once __DIR__ . '/vendor/autoload.php';
+
 /**
  * The main plugin class
  */
 final class Wp_Rest_Plugin {
 
     /**
+     * Plugin version
+     */
+    const version = '1.0.0';
+
+    /**
      * Class constructor
      */
     private function __construct() {
+        $this->define_constants();
 
+        register_activation_hook( __FILE__, [ $this, 'activate' ] );
+
+        add_action( 'plugin_loaded', [ $this, 'init_plugin' ] );
     }
+
 
     /**
      * Initializes a singleton instance
@@ -78,6 +90,44 @@ final class Wp_Rest_Plugin {
         }
 
         return $instance;
+    }
+
+    /**
+     * Define the required plugin constants
+     *
+     * @return void
+     */
+    public function define_constants() {
+        $prefix = 'WP_REST_PLUGIN_';
+        define( $prefix . 'VERSION', self::version );
+        define( $prefix . 'FILE', __FILE__ );
+        define( $prefix . 'PATH', __DIR__ );
+        define( $prefix . 'URL', plugins_url( '', WP_REST_PLUGIN_FILE ) );
+        define( $prefix . 'ASSETS', WP_REST_PLUGIN_URL . '/assets' );
+    }
+
+    /**
+     * Initialize the plugin
+     *
+     * @return void
+     */
+    public function init_plugin() {
+        new \Nymul\WpRestPlugin\Admin\Menu();
+    }
+
+    /**
+     * Do stuff upon plugin activation
+     *
+     * @return void
+     */
+    public function activate() {
+        $installed = get_option( 'wp_rest_plugin_installed' );
+
+        if ( ! $installed ) {
+            update_option( 'wp_rest_plugin_installed', time() );
+        }
+
+        update_option( 'wp_rest_plugin_version', WP_REST_PLUGIN_VERSION );
     }
 }
 
