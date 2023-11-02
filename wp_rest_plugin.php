@@ -9,7 +9,7 @@
  *
  * @wordpress-plugin
  * Plugin Name:       WP-REST-PLUGIN
- * Plugin URI:        https://github.com/nymul-islam-moon/Author-Bio
+ * Plugin URI:        https://github.com/nymul-islam-moon/WP-REST-PLUGIN
  * Description:       This plugin contains plugin basic rules and rest api. This is for only tutorial purpose.
  * Version:           1.0.0
  * Requires at least: 5.2
@@ -19,7 +19,7 @@
  * Text Domain:       author-bio
  * License:           GPL v2 or later
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Update URI:        https://github.com/nymul-islam-moon/Author-Bio
+ * Update URI:        https://github.com/nymul-islam-moon/WP-REST-PLUGIN
  */
 
 /**
@@ -80,3 +80,15 @@ final class Wp_Rest_Plugin {
         return $instance;
     }
 }
+
+/**
+ * Initializes the main plugin
+ *
+ * @return false|Wp_Rest_Plugin
+ */
+function wp_rest_plugin() {
+    return Wp_Rest_Plugin::init();
+}
+
+// kick-off the plugin
+wp_rest_plugin();
