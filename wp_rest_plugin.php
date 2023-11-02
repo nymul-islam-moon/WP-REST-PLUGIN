@@ -10,7 +10,7 @@
  * @wordpress-plugin
  * Plugin Name:       WP-REST-PLUGIN
  * Plugin URI:        https://github.com/nymul-islam-moon/Author-Bio
- * Description:       It will contain author information and additional links
+ * Description:       This plugin contains plugin basic rules and rest api. This is for only tutorial purpose.
  * Version:           1.0.0
  * Requires at least: 5.2
  * Requires PHP:      7.2
