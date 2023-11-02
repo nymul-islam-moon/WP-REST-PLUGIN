@@ -112,7 +112,11 @@ final class Wp_Rest_Plugin {
      * @return void
      */
     public function init_plugin() {
-        new \Nymul\WpRestPlugin\Admin\Menu();
+        if ( is_admin() ) {
+            new \Nymul\WpRestPlugin\Admin();
+        } else {
+            new \Nymul\WpRestPlugin\Frontend();
+        }
     }
 
     /**
