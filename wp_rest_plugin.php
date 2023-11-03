@@ -16,7 +16,7 @@
  * Requires PHP:      7.2
  * Author:            Nymul Islam Moon
  * Author URI:        https://github.com/nymul-islam-moon
- * Text Domain:       author-bio
+ * Text Domain:       wp-rest-plugin
  * License:           GPL v2 or later
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Update URI:        https://github.com/nymul-islam-moon/WP-REST-PLUGIN

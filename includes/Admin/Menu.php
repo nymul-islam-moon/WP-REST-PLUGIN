@@ -16,16 +16,19 @@ class Menu {
         $parent_slug = 'wp-rest-plugin';
         $capability = 'manage_options';
 
-        add_menu_page( __( 'WP REST PLUGIN', 'wp-rest-plugin' ), __( 'WP REST PLUGIN', 'wp-rest-plugin' ), $capability, $parent_slug, [ $this, 'plugin_page' ],  'dashicons-welcome-learn-more' );
+        add_menu_page( __( 'WP REST PLUGIN', 'wp-rest-plugin' ), __( 'WP REST PLUGIN', 'wp-rest-plugin' ), $capability, $parent_slug, [ $this, 'address_book_page' ],  'dashicons-welcome-learn-more' );
 
         add_submenu_page( $parent_slug, __( 'Address Book', 'wp-rest-plugin' ), __( 'Address Book', 'wp-rest-plugin' ), $capability, 'wp-rest-plugin-address-book', [ $this, 'address_book_page' ]);
+
+        add_submenu_page( $parent_slug, __( 'Settings', 'wp-rest-plugin' ), __( 'Settings', 'wp-rest-plugin' ),  $capability, 'wp-rest-plugin-settings', [ $this, 'settings_page' ] );
     }
 
-    public function plugin_page() {
+    public function settings_page() {
         echo "hello world";
     }
 
     public function address_book_page() {
-        echo 'Hello Address Book';
+        $addressBook = new AddressBook();
+        $addressBook->plugin_page();
     }
 }
